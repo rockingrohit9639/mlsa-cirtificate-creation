@@ -8,14 +8,14 @@ from email import encoders
 
 
 # Globals 
-sender_address = ' ' #your's email id
-sender_pass = ' ' #email id password
-base_dir = '  ' #path of folder on local machine
+sender_address = '' #your's email id
+sender_pass = '' #email id password
+base_dir = '' #path of folder on local machine
 
 
 def send_certificates():
     session = setup_session()
-    d1 = pd.read_csv('test.csv')
+    d1 = pd.read_csv('name.csv')
     name_list = d1["name"].tolist() 
     # print(name_list)
     for idx, item in enumerate(name_list):
@@ -36,7 +36,7 @@ def send_certificates():
         selectFont = ImageFont.truetype("C:/WINDOWS/FONTS/SEGOEUI.TTF", 150)
         d.text(location, item, fill = ((text_color)), font = selectFont)
         file_name = item.replace(' ','').lower()
-        im.save(base_dir + "certificates/" + file_name + ".png") #do create the folder with name certificates in base directory  
+        im.save(base_dir + file_name + ".png") #do create the folder with name certificates in base directory  
         send_mail(session, d1['email'][idx], item, 'certificates/%s.png' %file_name)
     close_session(session)
 
@@ -46,7 +46,7 @@ def send_mail(session, receiver_address, participant, file_name):
     message = MIMEMultipart()
     message['From'] = sender_address
     message['To'] = receiver_address
-    message['Subject'] = 'Certificate For Cyber Security Workshop'
+    message['Subject'] = 'Certificate For Getting Started with Web Development using Microsoft Technologies'
     content = f''' Hello,
     Thank you for participating 
     # body of email

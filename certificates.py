@@ -1,8 +1,11 @@
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
-d1 = pd.read_csv('name.csv')
-name_list = d1["name"].tolist() 
+d1 = pd.read_csv('name.csv') # File name in which names(for certificate) are written
+
+
+name_list = d1["name"].tolist()
+
 for i in name_list:
     im = Image.open('Event Certificate Template.jpg')
     d = ImageDraw.Draw(im)
